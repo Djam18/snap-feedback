@@ -1,0 +1,15 @@
+{
+    "name": "snap-feedback-widget",
+    "version": "0.1.0",
+    "description": "Embeddable Alpine.js feedback widget — no framework required",
+    "main": "dist/snap-feedback.min.js",
+    "scripts": {
+        "build": "esbuild src/feedback.js --bundle --minify --outfile=dist/snap-feedback.min.js",
+        "dev": "esbuild src/feedback.js --bundle --watch --outfile=dist/snap-feedback.dev.js"
+    },
+    "devDependencies": {
+        "esbuild": "^0.16.0",
+        "alpinejs": "^3.11.0"
+    },
+    "keywords": ["alpine", "feedback", "widget", "embeddable"]
+}
