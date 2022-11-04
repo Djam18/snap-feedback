@@ -1,0 +1,114 @@
+/* snap-feedback scoped CSS — uses CSS custom properties for theming */
+/* Consumers can override via: --snap-primary, --snap-bg, --snap-text */
+
+[data-snap-widget] {
+    --snap-primary:    #4f46e5;
+    --snap-primary-h:  #4338ca;
+    --snap-bg:         #ffffff;
+    --snap-text:       #1f2937;
+    --snap-border:     #e5e7eb;
+    --snap-radius:     12px;
+    --snap-shadow:     0 20px 60px rgba(0,0,0,.15), 0 4px 12px rgba(0,0,0,.08);
+}
+
+[data-snap-widget][data-theme="dark"] {
+    --snap-bg:     #1f2937;
+    --snap-text:   #f9fafb;
+    --snap-border: #374151;
+}
+
+/* Trigger button */
+.snap-trigger {
+    position: fixed;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    background: var(--snap-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.snap-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+}
+
+[data-position="bottom-right"] .snap-trigger { bottom: 24px; right: 24px; }
+[data-position="bottom-left"]  .snap-trigger { bottom: 24px; left: 24px;  }
+
+/* Overlay panel */
+.snap-panel {
+    position: fixed;
+    z-index: 9999;
+    bottom: 80px;
+    right: 24px;
+    width: 340px;
+    background: var(--snap-bg);
+    border: 1px solid var(--snap-border);
+    border-radius: var(--snap-radius);
+    box-shadow: var(--snap-shadow);
+    overflow: hidden;
+}
+
+[data-position="bottom-left"] .snap-panel { right: auto; left: 24px; }
+
+/* Mood selector */
+.snap-moods {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 16px;
+}
+
+.snap-mood-btn {
+    font-size: 28px;
+    padding: 8px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1;
+}
+.snap-mood-btn:hover    { transform: scale(1.15); }
+.snap-mood-btn.selected { border-color: var(--snap-primary); background: #ede9fe; transform: scale(1.1); }
+
+/* Form fields */
+.snap-textarea,
+.snap-input {
+    width: 100%;
+    background: var(--snap-bg);
+    color: var(--snap-text);
+    border: 1px solid var(--snap-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.snap-textarea:focus,
+.snap-input:focus    { border-color: var(--snap-primary); box-shadow: 0 0 0 3px rgba(79,70,229,.15); }
+
+/* Submit button */
+.snap-submit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--snap-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.snap-submit:hover    { background: var(--snap-primary-h); }
+.snap-submit:disabled { opacity: 0.6; cursor: not-allowed; }
