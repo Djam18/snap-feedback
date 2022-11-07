@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ mood: null }">
+<head>
+    <meta charset="UTF-8">
+    <title>snap-feedback mood selector demo</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="../widget/src/styles.css">
+</head>
+<body>
+<!-- Mood selector demo — standalone Alpine, no build step needed for this demo -->
+<div x-data="moodSelector()" class="flex gap-4 p-8">
+    <template x-for="(emoji, key) in moods" :key="key">
+        <button
+            @click="select(key)"
+            class="snap-mood-btn"
+            :class="{ selected: selected === key }"
+            x-text="emoji"
+        ></button>
+    </template>
+    <p x-show="selected" class="text-sm text-gray-600 self-center">
+        Selected: <span x-text="selected"></span>
+    </p>
+</div>
+
+<script>
+function moodSelector() {
+    return {
+        moods: { happy: '😀', neutral: '😐', sad: '😞', love: '❤️', fire: '🔥' },
+        selected: null,
+        select(key) { this.selected = key; },
+    };
+}
+</script>
+</body>
+</html>
